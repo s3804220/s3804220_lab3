@@ -18,7 +18,7 @@ public class VideoList implements MyIterator{
 			if (temp.getID().equals(id))
 				return temp;
 			else{
-				next();
+				currentItem++;
 			}
 		}
 		System.out.println("Video " + id + " not found");
