@@ -39,17 +39,20 @@ public class VideoStore {
 		//create 3 customers using CustomerFactory
 		Customer cust = CustomerFactory.createCustomer("vip", "Ngo Bao Chau", "12 Math Avenue", "VIP001", "0203050813");
 		myStore.addCustomer(cust);
+		assert cust != null;
 		cust.borrowVid(myStore.getVideo("VD001"));
 		cust = CustomerFactory.createCustomer("guest", "Pham Nhat Vuong", "12 Money Road", "G002", "0399999999");
 		myStore.addCustomer(cust);
+		assert cust != null;
 		cust.borrowVid(myStore.getVideo("VD002"));
 		cust = CustomerFactory.createCustomer("guest", "Nguyen Xuan Phuc", "12 Politics Street", "G003", "0311112222");
 		myStore.addCustomer(cust);
+		assert cust != null;
 		cust.borrowVid(myStore.getVideo("VD003"));
 
-		//create super vip account using CustomerFactory
-//		Customer superVIP = SuperVIPCustomer.getInstance();
+		//create super vip account using CustomerFactory (singleton)
 		cust = CustomerFactory.createCustomer("supervip", null, null, null, null);
+		assert cust != null;
 		System.out.println("name: " + cust.getName() + " id: " + cust.getID() + " address: " + cust.getAddress() + " phone: " + cust.getPhone());
 
 	}
