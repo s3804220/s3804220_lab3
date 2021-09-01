@@ -18,7 +18,7 @@ public class CustomerList implements MyIterator{
 			if (temp.getID().equals(id))
 				return temp;
 			else{
-				next();
+				currentItem++;
 			}
 		}
 		System.out.println("Customer " + id + " not found");
