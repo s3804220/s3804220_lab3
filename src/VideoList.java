@@ -1,21 +1,25 @@
 import java.util.ArrayList;
 
-public class VideoList {
-private ArrayList<Video> theList;
-	
+public class VideoList implements MyIterator{
+	private ArrayList<Video> theList;
+	int currentItem = 0;
+
 	public VideoList() {
 		this.theList = new ArrayList<Video>();
 	}
-	
+
 	public ArrayList<Video> getList() {
 		return this.theList;
 	}
 	
 	public Video getVideo(String id) {
-		for (int i = 0; i < this.theList.size(); i++) {
-			Video temp = this.theList.get(i);
+		while(hasNext()){
+			Video temp = this.theList.get(currentItem);
 			if (temp.getID().equals(id))
 				return temp;
+			else{
+				next();
+			}
 		}
 		System.out.println("Video " + id + " not found");
 		return null;
@@ -29,5 +33,18 @@ private ArrayList<Video> theList;
 		}
 		theList.add(vid);
 		return true;
+	}
+
+	@Override
+	public boolean hasNext() {
+		if (currentItem >= theList.size()){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public Object next() {
+		return theList.get(currentItem++);
 	}
 }

@@ -34,17 +34,23 @@ public class VideoStore {
 		myStore.addVideo(vid);
 		vid = new Video("VD003", "Gone with the wind", "Drama", 2, false);
 		myStore.addVideo(vid);
-		
-		//create 3 customers
-		Customer cust = new VIPCustomer("Ngo Bao Chau", "12 Math Avenue", "VIP001", "0203050813");
+
+
+		//create 3 customers using CustomerFactory
+		Customer cust = CustomerFactory.createCustomer("vip", "Ngo Bao Chau", "12 Math Avenue", "VIP001", "0203050813");
 		myStore.addCustomer(cust);
 		cust.borrowVid(myStore.getVideo("VD001"));
-		cust = new GuestCustomer("Pham Nhat Vuong", "12 Money Road", "G002", "0399999999");
+		cust = CustomerFactory.createCustomer("guest", "Pham Nhat Vuong", "12 Money Road", "G002", "0399999999");
 		myStore.addCustomer(cust);
 		cust.borrowVid(myStore.getVideo("VD002"));
-		cust = new GuestCustomer("Nguyen Xuan Phuc", "12 Politics Street", "G003", "0311112222");
+		cust = CustomerFactory.createCustomer("guest", "Nguyen Xuan Phuc", "12 Politics Street", "G003", "0311112222");
 		myStore.addCustomer(cust);
 		cust.borrowVid(myStore.getVideo("VD003"));
+
+		//create super vip account using CustomerFactory
+//		Customer superVIP = SuperVIPCustomer.getInstance();
+		cust = CustomerFactory.createCustomer("supervip", null, null, null, null);
+		System.out.println("name: " + cust.getName() + " id: " + cust.getID() + " address: " + cust.getAddress() + " phone: " + cust.getPhone());
 
 	}
 
